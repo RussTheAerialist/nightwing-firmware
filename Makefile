@@ -8,10 +8,10 @@ AVR_TOOLS_DIR = /usr/local
 AVRDDUDE = /usr/local/bin/avrdude
 CFLAGS_STD = -std=gnu11
 CXXFLAGS_STD = -std=gnu++11
-CXXFLAGS += -Wall
+CXXFLAGS += -Wall -fno-exceptions
 
 include $(CURDIR)/libraries.mk
-MONITOR_PORT = /dev/tty.usbserial*
+MONITOR_PORT = /dev/tty.usbmodem*
 CURRENT_DIR = $(shell basename $(CURDIR))
 
 OBJDIR = $(PROJECT_DIR)/bin/$(BOARD_TAG)/$(CURRENT_DIR)
