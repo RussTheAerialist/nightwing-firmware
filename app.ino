@@ -7,7 +7,7 @@
 #include "RainbowCycle.h"
 #include "TheaterChase.h"
 
-using Controller = PatternController<3, 75, 0>;
+using Controller = PatternController<4, 75, 0>;
 
 class CyclePatterns : public IOnComplete
 {
@@ -18,13 +18,16 @@ public:
 };
 
 PatternPtr patterns[] = {
-	new NightwingRegular(5, CRGB::Blue, CRGB::White),
+	new NightwingRegular(1, CRGB::Blue, CRGB::Yellow),
+	new NightwingRegular(2, CRGB::Red, CRGB::Cyan),
 	new TheaterChase(CRGB::Blue, CRGB::Gold),
 	new RainbowCycle()
 };
 
-FastLEDProvider<8> leds = {&(FastLED.addLeds<NEOPIXEL, (int)6>)};
-Controller controller = Controller { &leds, patterns, new CyclePatterns() };
+FastLEDProvider<16> leds = {&(FastLED.addLeds<NEOPIXEL, (int)6>)};
+Controller controller = Controller { &leds, patterns
+	, new CyclePatterns()
+};
 
 void setup()
 {
