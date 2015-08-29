@@ -22,6 +22,7 @@ public:
 
 	virtual void nextPattern() = 0;
 	virtual void setPattern(int patternIdx) = 0;
+	virtual PatternPtr getCurrentPattern() = 0;
 };
 
 class IOnComplete {
@@ -54,17 +55,20 @@ public:
 
 	~PatternController() = default;
 
-	void update()
+	bool update()
 	{
 		if (millis() - lastUpdate > interval) {
-			Serial.println("tick");
 			lastUpdate = millis();
 			
 			if (currentPattern) { // Deal with nullptrs
 				currentPattern->update(index, provider);
 			}
 			increment();
+
+			return true;
 		}
+
+		return false;
 	}
 
 	void increment() {
@@ -95,7 +99,10 @@ public:
 		currentPattern = patterns[currentPatternIndex];
 	}
 
-protected:
+	PatternPtr getCurrentPattern() override {
+		return currentPattern;
+	}
+
 	void OnCompleteCallback() {
 		if (onComplete) {
 			Serial.println("onComplete called");

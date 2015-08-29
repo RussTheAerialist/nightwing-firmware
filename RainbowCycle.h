@@ -25,6 +25,6 @@ public:
 		leds->Show();
 	}
 
-	int totalSteps() const override { return 255; }
+	int totalSteps() const override { return 256; }
 	PatternIds id() const override { return PatternIds::RainbowCycle; }
 };

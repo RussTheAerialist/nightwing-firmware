@@ -1,1 +1,1 @@
-ARDUINO_LIBS=FastLED
+ARDUINO_LIBS=FastLED CapacitiveSensor

@@ -23,7 +23,6 @@ public:
         for(int i=0; i< pixelCount; i++)
         {
             int rValue = random(100);
-            Serial.println(rValue);
             if (rValue < shockProbability) {
                 leds->SetPixelColor(i, color2);
             } else {

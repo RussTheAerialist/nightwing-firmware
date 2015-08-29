@@ -3,5 +3,6 @@
 enum class PatternIds {
 	RainbowCycle,
 	TheaterChase,
-	NightwingRegular
+	NightwingRegular,
+	Blackout
 };
